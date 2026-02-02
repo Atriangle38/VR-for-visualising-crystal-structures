@@ -1,26 +1,11 @@
 [gd_scene format=3 uid="uid://bx7wowlnlj0bf"]
 
-[ext_resource type="Script" uid="uid://dgg1n4oxefncl" path="res://Button.cs" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://beuj0sxag6fly" path="res://CameraOrigin.cs" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://42pnftqh8khd" path="res://OpenFileWindow.cs" id="3_h2yge"]
 
 [node name="Node" type="Node" unique_id=68596749]
 
 [node name="Crystal" type="Node" parent="." unique_id=1116414994]
-
-[node name="Button" type="Button" parent="." unique_id=1066488426]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -61.5
-offset_top = -15.5
-offset_right = 61.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Load Structure"
-script = ExtResource("1_0xm2m")
 
 [node name="CameraOrigin" type="Node3D" parent="." unique_id=1285775667]
 script = ExtResource("1_ig7tw")
@@ -32,4 +17,19 @@ current = true
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1455969]
 transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, -3, 0, -3)
 
-[connection signal="pressed" from="Button" to="Button" method="ButtonPressedSignal"]
+[node name="OpenFileButton" type="Button" parent="." unique_id=1066488426]
+offset_right = 123.0
+offset_bottom = 31.0
+text = "Open File"
+
+[node name="OpenFileWindow" type="FileDialog" parent="." unique_id=940820510]
+oversampling_override = 1.0
+title = "Open a File"
+position = Vector2i(0, 36)
+file_mode = 0
+access = 2
+use_native_dialog = true
+script = ExtResource("3_h2yge")
+
+[connection signal="pressed" from="OpenFileButton" to="OpenFileWindow" method="ShowOpenFileWindowSignal"]
+[connection signal="file_selected" from="OpenFileWindow" to="OpenFileWindow" method="FileSelectedSignal"]

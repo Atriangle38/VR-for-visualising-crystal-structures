@@ -1,0 +1,36 @@
+//// WIP CODE FOR SAVING FILES
+using System.IO;
+using System.Text.Json;
+
+public partial class SaveFileButton : Godot.Button
+{
+	private void SaveFileButtonPressedSignal()
+	{
+		Hide();
+		SaveFile saveFile = new()
+		{
+			Size = 1,
+			A1 = [1, 0, 0],
+		 	A2 = [0, 1, 0],
+		 	A3 = [0, 0, 1],
+		 	BasisAtoms = [
+		 		new()
+		 		{
+		 			RelativePos = [0, 0, 0],
+		 			Colour = [1, 0, 0]
+		 		},
+		 		new()
+		 		{
+		 			RelativePos = [0.5f, 0.5f, 0.5f],
+		 			Colour = [0, 1, 1]
+		 		}
+		 	]
+		};
+		var options = new JsonSerializerOptions()
+		{
+			WriteIndented = true
+		};
+		string structureJSON = JsonSerializer.Serialize(saveFile, options);
+		File.WriteAllText("saved structures/FCC.json", structureJSON);
+	}
+}

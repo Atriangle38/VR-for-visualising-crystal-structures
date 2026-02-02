@@ -1,12 +1,16 @@
+// A static class for vector calculations.
+
 using Godot;
 
 public static class VectorCalculator
 {
+    // Normalises the input vector to unit length:
     public static Vector3 Normalise(Vector3 vector)
     {
         return vector / vector.Length();
     }
 
+    // Returns a unit vector orthogonal to the input vector:
     public static Vector3 Orthonomal1(Vector3 vector)
     {
         if (vector.X == 0 & vector.Y == 0)
@@ -19,6 +23,7 @@ public static class VectorCalculator
         }
     }
 
+    // Returns a unit vector orthogonal to both the input vector and the vector returned by the Orthonormal1 function of the inout vector:
     public static Vector3 Orthonomal2(Vector3 vector)
     {
         if (vector.X == 0 & vector.Y == 0)
