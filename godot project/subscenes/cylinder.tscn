@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cserc7yuacms5"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0xm2m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv1fk"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=325147079]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_0xm2m")
+surface_material_override/0 = SubResource("StandardMaterial3D_fv1fk")
